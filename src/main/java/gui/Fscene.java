@@ -10,9 +10,8 @@ import java.awt.event.ActionListener;
 
 public class Fscene {
 
-    private static JFrame frame = new JFrame("Game");
-    private static JTextField SCENE_INFO = new JTextField();
-    private static String SCENE_TEXT;
+    private final static JFrame frame = new JFrame("Game");
+    private final static JTextField SCENE_INFO = new JTextField();
 
     public static void showScene(){
         SCENE_INFO.setEditable(false);
@@ -29,12 +28,10 @@ public class Fscene {
 
     private static JTextField userInput(){
         JTextField input = new JTextField(10);
-        input.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                String text = input.getText();
-                Engine.getUserInput(text);
-                input.setText(null);
-            }
+        input.addActionListener(e -> {
+            String text = input.getText();
+            Engine.getUserInput(text);
+            input.setText(null);
         });
         return input;
     }
@@ -42,11 +39,7 @@ public class Fscene {
     private static JButton knop(){
         JButton b = new JButton("change scene_info text");
         b.setBounds(50,100,95,30);
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                SCENE_INFO.setText("test test test");
-            }
-        });
+        b.addActionListener(e -> SCENE_INFO.setText("test test test"));
 
         return b;
     }
