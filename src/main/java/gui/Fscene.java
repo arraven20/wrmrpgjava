@@ -5,8 +5,7 @@ import core.Engine;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class Fscene {
 
@@ -15,34 +14,65 @@ public class Fscene {
 
     public static void showScene(){
         SCENE_INFO.setEditable(false);
-        SCENE_INFO.setText(Display.displayScene(0));
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(SCENE_INFO, BorderLayout.CENTER);
-        frame.add(userInput(), BorderLayout.SOUTH);
-        frame.add(knop(), BorderLayout.EAST);
 
+        frame.add(pagePanel());
         frame.pack();
         frame.setVisible(true);
     }
 
-    private static JTextField userInput(){
+    private static JPanel pagePanel(){
+        JPanel panel = new JPanel();
+        GridBagLayout layout = new GridBagLayout();
+        GridBagConstraints gbc = new GridBagConstraints();
+        panel.setLayout(layout);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        panel.add(scenePanel(), gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        panel.add(userInput(), gbc);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        panel.add(knop(), gbc);
+
+        return panel;
+    }
+
+    private static JPanel scenePanel(){
+        JPanel panel = new JPanel();
+        GridBagLayout layout = new GridBagLayout();
+        SCENE_INFO.setText(Display.displayScene(0));
+        panel.add(SCENE_INFO);
+
+        return panel;
+    }
+
+    private static JPanel userInput(){
+        JPanel panel = new JPanel();
         JTextField input = new JTextField(10);
         input.addActionListener(e -> {
             String text = input.getText();
             Engine.getUserInput(text);
             input.setText(null);
         });
-        return input;
+        panel.add(input);
+        return panel;
     }
 
-    private static JButton knop(){
+    private static JPanel knop(){
+        JPanel panel = new JPanel();
         JButton b = new JButton("change scene_info text");
         b.setBounds(50,100,95,30);
         b.addActionListener(e -> SCENE_INFO.setText("test test test"));
+        panel.add(b);
 
-        return b;
+        return panel;
     }
-
-
 }
