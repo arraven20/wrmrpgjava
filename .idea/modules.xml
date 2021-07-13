@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/wrmrpgjava.iml" filepath="$PROJECT_DIR$/.idea/wrmrpgjava.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rpgwrm.iml" filepath="$PROJECT_DIR$/rpgwrm.iml" />
     </modules>
   </component>
 </project>

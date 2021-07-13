@@ -10,6 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="rpgwrm" target="16" />
       <module name="wrmrpgjava" target="16" />
     </bytecodeTargetLevel>
   </component>
