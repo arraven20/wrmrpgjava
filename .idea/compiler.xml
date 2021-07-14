@@ -6,8 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="wrmrpgjava" />
         <module name="rpgwrm" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="rpgwrm" target="16" />
+      <module name="wrmrpgjava" target="16" />
+    </bytecodeTargetLevel>
   </component>
 </project>
