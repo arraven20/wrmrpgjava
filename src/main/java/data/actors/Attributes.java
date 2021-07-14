@@ -1,0 +1,25 @@
+package data.actors;
+
+public class Attributes {
+    int warrior;
+    int rogue;
+    int mage;
+
+    public Attributes(int warrior, int rogue, int mage){
+        this.warrior = warrior;
+        this.rogue = rogue;
+        this.mage = mage;
+    }
+
+    public int getWarrior(){ return this.warrior; }
+
+    public int getRogue(){ return this.rogue; }
+
+    public int getMage(){ return this.mage; }
+
+    public void setWarrior(int value){ this.warrior = value; }
+
+    public void setRogue(int value){ this.rogue = value; }
+
+    public void setMage(int value){ this.mage = value; }
+}
