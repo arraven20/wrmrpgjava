@@ -20,4 +20,6 @@ abstract public class Direction {
         return this.EXIT;
     }
 
+    public void setLocked(){ this.locked = true; }
+
 }

@@ -49,6 +49,14 @@ public class Scene {
 
     public South getSouth(){ return SOUTH; }
 
+    public East getEast(){ return EAST; }
+
+    public West getWest(){ return WEST; }
+
+    public Up getUp(){ return UP; }
+
+    public Down getDown(){ return DOWN; }
+
 }
 
 

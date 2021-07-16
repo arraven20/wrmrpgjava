@@ -30,32 +30,39 @@ public class Actions {
         switch (direction) {
             case "north" -> {
                 newExitId = currentScene.getNorth().getExit();
-                goNorth(newExitId);
+                go(newExitId, "north");
             }
             case "south" -> {
                 newExitId = currentScene.getSouth().getExit();
-                goSouth(newExitId);
+                go(newExitId, "south");;
+            }
+            case "east" -> {
+                newExitId = currentScene.getEast().getExit();
+                go(newExitId, "east");
+            }
+            case "west" -> {
+                newExitId = currentScene.getWest().getExit();
+                go(newExitId, "west");
+            }
+            case "up" -> {
+                newExitId = currentScene.getUp().getExit();
+                go(newExitId, "up");
+            }
+            case "down" -> {
+                newExitId = currentScene.getDown().getExit();
+                go(newExitId, "down");
             }
         }
     }
 
-    private static void goNorth(int exitId){
+    private static void go(int exitId, String direction){
         if(!(exitId == 0)){
-            Engine.setFeedbackText("You can go north");
+            Engine.setFeedbackText("You can go " + direction);
             Engine.setCurrentScene(Engine.getScene(exitId));
         }else{
-            Engine.setFeedbackText("You cannot go north");
+            Engine.setFeedbackText("You cannot go " + direction);
         }
     }
 
-    private static void goSouth(int exitId){
 
-        if(!(exitId == 0)){
-            Engine.setFeedbackText("You can go south");
-            Scene newScene = Engine.getScene(exitId);
-            Engine.setCurrentScene(newScene);
-        }else{
-            Engine.setFeedbackText("You cannot go south");
-        }
-    }
 }
