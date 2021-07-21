@@ -33,6 +33,7 @@ public class Scene {
     public void setDown(Down d){ this.DOWN = d; }
 
 
+
     public int getSceneId(){
         return this.sceneId;
     }
@@ -48,6 +49,16 @@ public class Scene {
     public North getNorth(){ return NORTH; }
 
     public South getSouth(){ return SOUTH; }
+
+    public East getEast(){ return EAST; }
+
+    public West getWest(){ return WEST; }
+
+    public Up getUp(){ return UP; }
+
+    public Down getDown(){ return DOWN; }
+
+
 
 }
 
