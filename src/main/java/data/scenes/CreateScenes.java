@@ -1,5 +1,6 @@
 package data.scenes;
 
+import data.Lock;
 import data.scenes.directions.*;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public class CreateScenes {
         s1.setSouth(new South("To s2", 2));
         s1.setEast(new East("To s3", 3));
         s1.set_Up(new Up("to s4", 4));
-        s1.setDown(new Down("to s5",5));
+        s1.setDown(new Down("to s5",5, new Lock(true, "bronze")));
         s2.setNorth(new North("To S1", 1));
         s3.setWest(new West("To s1", 1));
         s4.setDown(new Down("To s1", 1));

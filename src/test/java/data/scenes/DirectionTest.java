@@ -1,5 +1,6 @@
 package data.scenes;
 
+import data.Lock;
 import data.scenes.directions.North;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,7 +12,7 @@ public class DirectionTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        north = new North("north desc", 1);
+        north = new North("north desc", 1, new Lock());
     }
 
 //    @Test

@@ -1,6 +1,7 @@
 package core;
 
 import data.scenes.Scene;
+import data.scenes.directions.Direction;
 
 public class Actions {
 
@@ -26,39 +27,27 @@ public class Actions {
 
     private static void move(String direction){
         Scene currentScene = Engine.getCurrentScene();
-        int newExitId;
         switch (direction) {
-            case "north" -> {
-                newExitId = currentScene.getNorth().getExit();
-                go(newExitId, "north");
-            }
-            case "south" -> {
-                newExitId = currentScene.getSouth().getExit();
-                go(newExitId, "south");;
-            }
-            case "east" -> {
-                newExitId = currentScene.getEast().getExit();
-                go(newExitId, "east");
-            }
-            case "west" -> {
-                newExitId = currentScene.getWest().getExit();
-                go(newExitId, "west");
-            }
-            case "up" -> {
-                newExitId = currentScene.getUp().getExit();
-                go(newExitId, "up");
-            }
-            case "down" -> {
-                newExitId = currentScene.getDown().getExit();
-                go(newExitId, "down");
-            }
+            case "north" -> go(currentScene.getNorth(), "north");
+            case "south" -> go(currentScene.getSouth(), "south");
+            case "east" -> go(currentScene.getEast(), "east");
+            case "west" -> go(currentScene.getWest(),"west");
+            case "up" -> go(currentScene.getUp(), "up");
+            case "down" -> go(currentScene.getDown(), "down");
         }
     }
 
-    private static void go(int exitId, String direction){
+    private static void go(Direction exit, String direction){
+        int exitId = exit.getExit();
         if(!(exitId == 0)){
-            Engine.setFeedbackText("You can go " + direction);
-            Engine.setCurrentScene(Engine.getScene(exitId));
+            // check if locked
+            if(!exit.getLock().isLocked()){
+                Engine.setFeedbackText("You can go " + direction);
+                Engine.setCurrentScene(Engine.getScene(exitId));
+            }else{
+                Engine.setFeedbackText("Locked!!");
+            }
+
         }else{
             Engine.setFeedbackText("You cannot go " + direction);
         }

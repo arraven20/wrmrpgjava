@@ -33,6 +33,7 @@ public class Scene {
     public void setDown(Down d){ this.DOWN = d; }
 
 
+
     public int getSceneId(){
         return this.sceneId;
     }
@@ -56,6 +57,8 @@ public class Scene {
     public Up getUp(){ return UP; }
 
     public Down getDown(){ return DOWN; }
+
+
 
 }
 

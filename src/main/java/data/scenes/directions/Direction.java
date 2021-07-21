@@ -1,15 +1,23 @@
 package data.scenes.directions;
 
+import data.Lock;
+
 abstract public class Direction {
     String DESCRIPTION;
     int EXIT;
-    boolean locked;
-    String key;
+    Lock lock;
+
+    Direction(String description, int exit, Lock lock){
+        this.DESCRIPTION = description;
+        this.EXIT = exit;
+        this.lock = lock;
+    }
 
     Direction(String description, int exit){
         this.DESCRIPTION = description;
         this.EXIT = exit;
-        this.locked = false;
+        //this.locked = false;
+        this.lock = new Lock();
     }
 
     public String getDescription(){
@@ -20,6 +28,6 @@ abstract public class Direction {
         return this.EXIT;
     }
 
-    public void setLocked(){ this.locked = true; }
+    public Lock getLock(){ return this.lock; }
 
 }
