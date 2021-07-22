@@ -1,6 +1,7 @@
 package core;
 
 import data.scenes.Scene;
+import data.scenes.directions.Direction;
 
 public class Actions {
 
@@ -26,36 +27,31 @@ public class Actions {
 
     private static void move(String direction){
         Scene currentScene = Engine.getCurrentScene();
-        int newExitId;
         switch (direction) {
-            case "north" -> {
-                newExitId = currentScene.getNorth().getExit();
-                goNorth(newExitId);
-            }
-            case "south" -> {
-                newExitId = currentScene.getSouth().getExit();
-                goSouth(newExitId);
-            }
+            case "north" -> go(currentScene.getNorth(), "north");
+            case "south" -> go(currentScene.getSouth(), "south");
+            case "east" -> go(currentScene.getEast(), "east");
+            case "west" -> go(currentScene.getWest(),"west");
+            case "up" -> go(currentScene.getUp(), "up");
+            case "down" -> go(currentScene.getDown(), "down");
         }
     }
 
-    private static void goNorth(int exitId){
+    private static void go(Direction exit, String direction){
+        int exitId = exit.getExit();
         if(!(exitId == 0)){
-            Engine.setFeedbackText("You can go north");
-            Engine.setCurrentScene(Engine.getScene(exitId));
+            // check if locked
+            if(!exit.getLock().isLocked()){
+                Engine.setFeedbackText("You can go " + direction);
+                Engine.setCurrentScene(Engine.getScene(exitId));
+            }else{
+                Engine.setFeedbackText("Locked!!");
+            }
+
         }else{
-            Engine.setFeedbackText("You cannot go north");
+            Engine.setFeedbackText("You cannot go " + direction);
         }
     }
 
-    private static void goSouth(int exitId){
 
-        if(!(exitId == 0)){
-            Engine.setFeedbackText("You can go south");
-            Scene newScene = Engine.getScene(exitId);
-            Engine.setCurrentScene(newScene);
-        }else{
-            Engine.setFeedbackText("You cannot go south");
-        }
-    }
 }
