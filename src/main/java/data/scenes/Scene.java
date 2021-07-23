@@ -4,15 +4,16 @@ import data.scenes.directions.*;
 
 
 public class Scene {
-    int sceneId;
-    String title;
-    String description;
-    North NORTH = new North("test north", 0);
-    South SOUTH = new South("test south", 0);
-    East EAST = new East("test east", 0);
-    West WEST = new West("test west", 0);
-    Up UP = new Up("test up", 0);
-    Down DOWN = new Down("test down", 0);
+    private final String NO_PASSAGE = "no passage";
+    private int sceneId;
+    private String title;
+    private String description;
+    private North NORTH = new North(NO_PASSAGE, 0);
+    private South SOUTH = new South(NO_PASSAGE, 0);
+    private East EAST = new East(NO_PASSAGE, 0);
+    private West WEST = new West(NO_PASSAGE, 0);
+    private Up UP = new Up(NO_PASSAGE, 0);
+    private Down DOWN = new Down(NO_PASSAGE, 0);
 
     public Scene(int sceneId, String title, String description){
         this.sceneId = sceneId;

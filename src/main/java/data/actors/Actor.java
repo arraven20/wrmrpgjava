@@ -17,20 +17,26 @@ public class Actor {
         this.type = type;
     }
 
-
-
     public void setAttributes(Attributes values){ this.attributes = values; }
 
     public void setHealth(){
-        int max_hp = this.attributes.warrior + 6;
-        int max_mana = this.attributes.mage * 2;
+        int max_hp = this.attributes.getWarrior() + 6;
+        int max_mana = this.attributes.getMage() * 2;
         this.health = new Health(max_hp, max_mana);
     }
 
+    public void calculateAndSetDefense(){
+        this.defense = (int) ((Math.floor(this.attributes.getWarrior() + this.attributes.getMage()) / 2) + 4);
+    }
+
+
     public String getName(){ return this.name; }
+
     public Attributes getAttributes(){ return this.attributes; }
 
     public Health getHealth(){ return this.health; }
+
+    public int getDefene(){ return this.defense; }
 
 
 }

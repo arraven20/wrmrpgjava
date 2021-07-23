@@ -5,6 +5,7 @@ import data.scenes.Scene;
 
 public class Display {
     private static String FEEDBACK = "";
+    private static final String NEWLINE = "\n";
 
     public static void setFeedback(String text){
         FEEDBACK = text;
@@ -15,10 +16,28 @@ public class Display {
         StringBuilder info = new StringBuilder();
 
         String north = "North: " + currentScene.getNorth().getDescription();
+        String south = "South: " + currentScene.getSouth().getDescription();
+        String east = "East: " + currentScene.getEast().getDescription();
+        String west = "West: " + currentScene.getWest().getDescription();
+        String up = "Up: " + currentScene.getUp().getDescription();
+        String down = "Down: " + currentScene.getDown().getDescription();
+
+
 
         info.append(currentScene.getDescription());
-        info.append("\n");
+        info.append(NEWLINE);
+        info.append(NEWLINE);
         info.append(north);
+        info.append(NEWLINE);
+        info.append(south);
+        info.append(NEWLINE);
+        info.append(east);
+        info.append(NEWLINE);
+        info.append(west);
+        info.append(NEWLINE);
+        info.append(up);
+        info.append(NEWLINE);
+        info.append(down);
 
         return info.toString();
     }
@@ -34,27 +53,29 @@ public class Display {
 
     public static String playerInfo(){
         Actor pc = Engine.getPlayer();
-        StringBuilder test = new StringBuilder();
+        StringBuilder player = new StringBuilder();
 
-        String newline = "\n";
         String health = "Health: " + pc.getHealth().getMax_hp() + " / " + pc.getHealth().getHp();
         String mana = "Mana: " + pc.getHealth().getMax_mana() + " / " + pc.getHealth().getMana();
         String warrior = "Warrior: " + pc.getAttributes().getWarrior();
         String rogue = "Rogue: " + pc.getAttributes().getRogue();
         String mage = "Mage: " + pc.getAttributes().getMage();
-        test.append(pc.getName());
-        test.append(newline);
-        test.append(newline);
-        test.append(health + " " + mana);
-        test.append(newline);
-        test.append(newline);
-        test.append(warrior);
-        test.append(newline);
-        test.append(rogue);
-        test.append(newline);
-        test.append(mage);
+        String defense = "Defense: " + pc.getDefene();
+        player.append(pc.getName());
+        player.append(NEWLINE);
+        player.append(NEWLINE);
+        player.append(health).append(" ").append(mana);
+        player.append(NEWLINE);
+        player.append(NEWLINE);
+        player.append(warrior);
+        player.append(NEWLINE);
+        player.append(rogue);
+        player.append(NEWLINE);
+        player.append(mage);
+        player.append(NEWLINE);
+        player.append(defense);
 
-        return test.toString();
+        return player.toString();
     }
 
 

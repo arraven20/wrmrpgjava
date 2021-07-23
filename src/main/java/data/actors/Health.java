@@ -2,10 +2,10 @@ package data.actors;
 
 public class Health {
 
-    int max_hp;
-    int hp;
-    int max_mana;
-    int mana;
+    private int max_hp;
+    private int hp;
+    private int max_mana;
+    private int mana;
 
     public Health(int max_hp, int max_mana){
         this.max_hp = max_hp;

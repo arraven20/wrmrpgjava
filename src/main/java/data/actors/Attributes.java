@@ -1,9 +1,9 @@
 package data.actors;
 
 public class Attributes {
-    int warrior;
-    int rogue;
-    int mage;
+    private int warrior;
+    private int rogue;
+    private int mage;
 
     public Attributes(int warrior, int rogue, int mage){
         this.warrior = warrior;
