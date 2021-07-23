@@ -16,26 +16,20 @@ public class Engine {
 
     public static void dataSetup(){
         SCENES = CreateScenes.create();
-        Actor intialPlayer = CreateActors.createPlayer();
-
         setCurrentScene(getScene(1));
-        setPlayer(CreateActors.createPlayer());
+        PLAYER = CreateActors.createInitialPlayer();
     }
+
+    public static Scene getScene(int sId){ return SCENES.get(sId); }
+
+    public static void getUserInput(String input){ Actions.receiveAction(input.toLowerCase()); }
+
+    public static Scene getCurrentScene(){ return CURRENT_SCENE; }
+
+    public static Actor getPlayer(){ return PLAYER; }
 
     public static void setCurrentScene(Scene s){ CURRENT_SCENE = s; }
 
     public static void setFeedbackText(String text){ Display.setFeedback(text); }
-
-    private static void setPlayer(Actor pc){ PLAYER = pc; }
-
-    public static void setPlayerScene(Scene newScene){}
-
-
-
-    public static Scene getScene(int sId){ return SCENES.get(sId); }
-
-    public static void getUserInput(String input){ Actions.recieveAction(input.toLowerCase()); }
-
-    public static Scene getCurrentScene(){ return CURRENT_SCENE; }
 
 }
