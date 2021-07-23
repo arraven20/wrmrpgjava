@@ -1,5 +1,7 @@
 package data.actors;
 
+import data.scenes.Scene;
+
 public class Actor {
 
     private int id;
@@ -8,6 +10,7 @@ public class Actor {
     private Attributes attributes;
     private Health health;
     private int defense;
+    private Scene currentScene;
 
 
     public Actor(int id, String name, String type){
@@ -18,6 +21,8 @@ public class Actor {
 
     public Attributes getAttributes(){ return this.attributes; }
 
+    public Scene getCurrentScene(){ return this.currentScene; }
+
     public void setAttributes(Attributes values){ this.attributes = values; }
 
     public void setHealth(){
@@ -25,6 +30,8 @@ public class Actor {
         int max_mana = 0;
         this.health = new Health(max_hp, max_mana);
     }
+
+    public void setCurrentScene(Scene newScene){ this.currentScene = newScene; }
 
 
 }
