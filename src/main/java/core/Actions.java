@@ -6,7 +6,7 @@ import data.scenes.directions.Direction;
 public class Actions {
 
 
-    public static void recieveAction(String userAction){
+    public static void receiveAction(String userAction){
         String[] actionArray = userAction.split(" ");
 
         if (actionArray.length == 2){
@@ -14,7 +14,15 @@ public class Actions {
             String action = actionArray[1];
             if (actionType.equals("go")){
                 move(action);
-            }else{
+
+            }
+            if(actionType.equals("test")){
+
+            }
+
+
+
+            else{
                 System.out.println("cannot go");
             }
         }else{

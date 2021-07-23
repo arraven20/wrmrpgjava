@@ -11,7 +11,15 @@ public class Display {
 
     public static String displayCurrentSceneInfo(){
         Scene currentScene = Engine.getCurrentScene();
-        return currentScene.getDescription() + " " + currentScene.getNorth().getDescription();
+        StringBuilder info = new StringBuilder();
+
+        String north = "North: " + currentScene.getNorth().getDescription();
+
+        info.append(currentScene.getDescription());
+        info.append("\n");
+        info.append(north);
+
+        return info.toString();
     }
 
     public static String displayCurrentSceneTitle(){
@@ -21,5 +29,14 @@ public class Display {
 
     public static String feedback(){
         return FEEDBACK;
+    }
+
+    public static String playerInfo(){
+        StringBuilder test = new StringBuilder();
+        test.append(Engine.getPlayer().getName());
+        test.append("\n");
+        test.append("player info");
+
+        return test.toString();
     }
 }
