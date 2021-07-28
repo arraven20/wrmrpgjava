@@ -21,6 +21,7 @@ public class CreateActors {
         bandit.setAttributes(new Attributes(5, 3, 2));
         bandit.setHealth();
         bandit.calculateAndSetDefense();
+        bandit.setWeapon(CreateItems.dagger());
 
         return bandit;
     }

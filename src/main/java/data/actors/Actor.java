@@ -49,5 +49,7 @@ public class Actor implements Serializable {
 
     public int getCurrentSceneId(){ return this.currentSceneId; }
 
+    public Weapon getWeapon(){ return this.weapon; }
+
 
 }
