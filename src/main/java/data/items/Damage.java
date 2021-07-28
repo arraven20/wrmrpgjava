@@ -19,4 +19,10 @@ public class Damage implements Serializable {
         this.bonus = 0;
         this.bonusType = "+";
     }
+
+    public int getBonus(){ return this.bonus; }
+
+    public String getBonusType(){ return this.bonusType; }
+
+    public int getDice(){ return this.dice; }
 }

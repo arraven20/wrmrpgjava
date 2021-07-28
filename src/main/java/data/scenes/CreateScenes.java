@@ -2,6 +2,7 @@ package data.scenes;
 
 import data.Lock;
 import data.actors.CreateActors;
+import data.events.Event;
 import data.scenes.directions.*;
 
 import java.util.HashMap;
@@ -26,7 +27,8 @@ public class CreateScenes {
         s4.setDown(new Down("To s1", 1));
         s5.set_Up(new Up("To s1", 1));
 
-        s3.setMonster(CreateActors.bandit());
+        //s3.setMonster(CreateActors.bandit());
+        s3.setEvent(new Event("combat", CreateActors.bandit()));
 
         scenes.put(s1.getSceneId(), s1);
         scenes.put(s2.getSceneId(), s2);
