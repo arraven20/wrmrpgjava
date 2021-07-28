@@ -16,17 +16,12 @@ public class Actions {
                 move(action);
 
             }
-            if(actionType.equals("test")){
-
-            }
-
-
-
             else{
-                System.out.println("cannot go");
+                System.out.println(actionType + " is not a known action");
+                Engine.setFeedbackText("That is an unknown action");
             }
         }else{
-            Engine.setFeedbackText("actionArray is shorter then 2");
+            System.out.println("actionArray is shorter then 2");
         }
 
 //        for (String a : arrOfStr)

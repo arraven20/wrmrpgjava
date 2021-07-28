@@ -1,6 +1,8 @@
 package data.actors;
 
-public class Attributes {
+import java.io.Serializable;
+
+public class Attributes implements Serializable {
     private int warrior;
     private int rogue;
     private int mage;

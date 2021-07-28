@@ -2,7 +2,9 @@ package data.scenes.directions;
 
 import data.Lock;
 
-abstract public class Direction {
+import java.io.Serializable;
+
+abstract public class Direction implements Serializable {
     String DESCRIPTION;
     int EXIT;
     Lock lock;

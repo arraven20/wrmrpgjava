@@ -1,9 +1,12 @@
 package data.scenes;
 
+import data.actors.Actor;
 import data.scenes.directions.*;
 
+import java.io.Serializable;
 
-public class Scene {
+
+public class Scene implements Serializable {
     private final String NO_PASSAGE = "no passage";
     private int sceneId;
     private String title;
@@ -14,6 +17,7 @@ public class Scene {
     private West WEST = new West(NO_PASSAGE, 0);
     private Up UP = new Up(NO_PASSAGE, 0);
     private Down DOWN = new Down(NO_PASSAGE, 0);
+    private Actor monster;
 
     public Scene(int sceneId, String title, String description){
         this.sceneId = sceneId;
@@ -32,6 +36,8 @@ public class Scene {
     public void set_Up(Up u){ this.UP = u; }
 
     public void setDown(Down d){ this.DOWN = d; }
+
+    public void setMonster(Actor monster){ this.monster = monster; }
 
 
 
@@ -58,6 +64,8 @@ public class Scene {
     public Up getUp(){ return UP; }
 
     public Down getDown(){ return DOWN; }
+
+    public Actor getMonster(){ return this.monster; }
 
 
 

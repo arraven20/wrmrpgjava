@@ -1,6 +1,8 @@
 package data;
 
-public class Lock {
+import java.io.Serializable;
+
+public class Lock implements Serializable {
 
     boolean locked;
     String key;

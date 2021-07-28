@@ -5,19 +5,46 @@ import data.actors.CreateActors;
 import data.scenes.CreateScenes;
 import data.scenes.Scene;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 public class Engine {
 
-    private static HashMap<Integer, Scene> SCENES = new HashMap<>();
+    static HashMap<Integer, Scene> SCENES = new HashMap<>();
 
     private static Scene CURRENT_SCENE;
     private static Actor PLAYER;
+    private static String GAME_STATE = "WANDERING";
 
-    public static void dataSetup(){
+    public static void dataSetup() throws IOException, ClassNotFoundException {
+        newGameSetup();
+    }
+
+    public static void setGameState(String state){ GAME_STATE = state; }
+
+    public static String getGameState(){ return GAME_STATE; }
+
+    public static void newGameSetup() throws IOException, ClassNotFoundException{
         SCENES = CreateScenes.create();
-        setCurrentScene(getScene(1));
+        FileHandler.writeScenes(SCENES);
         PLAYER = CreateActors.createInitialPlayer();
+        FileHandler.writePlayer(PLAYER);
+        setCurrentScene(getScene(PLAYER.getCurrentSceneId()));
+        System.out.println("New Game set up");
+    }
+
+    public static void loadGame() throws IOException, ClassNotFoundException {
+        SCENES = FileHandler.readScenes();
+        PLAYER = FileHandler.readPlayer();
+        CURRENT_SCENE = getScene(PLAYER.getCurrentSceneId());
+        System.out.println("Game loaded");
+    }
+
+    public static void saveGame() throws IOException {
+        FileHandler.writeScenes(SCENES);
+        PLAYER.setCurrentSceneId(CURRENT_SCENE.getSceneId());
+        FileHandler.writePlayer(PLAYER);
+        System.out.println("Game saved");
     }
 
     public static Scene getScene(int sId){ return SCENES.get(sId); }
