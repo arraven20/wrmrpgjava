@@ -5,6 +5,7 @@ import core.Engine;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 
 public class Fscene {
@@ -50,10 +51,10 @@ public class Fscene {
         gbc.gridy = 2;
         panel.add(userInput(), gbc);
 
-//        gbc.fill = GridBagConstraints.HORIZONTAL;
-//        gbc.gridx = 1;
-//        gbc.gridy = 2;
-//        panel.add(knop(), gbc);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        panel.add(knopSave(), gbc);
 
         return panel;
     }
@@ -80,11 +81,17 @@ public class Fscene {
         return panel;
     }
 
-    private static JPanel knop(){
+    private static JPanel knopSave(){
         JPanel panel = new JPanel();
-        JButton b = new JButton("character info");
+        JButton b = new JButton("save");
         b.setBounds(50,100,95,30);
-        b.addActionListener(e -> ScenePanel.SCENE_INFO.setText("test test test"));
+        b.addActionListener(e -> {
+            try {
+                saveData();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        });
         panel.add(b);
 
         return panel;
@@ -92,8 +99,10 @@ public class Fscene {
 
     private static void refreshData(){
         ScenePanel.SCENE_TITLE.setText(Display.displayCurrentSceneTitle());
-        ScenePanel.SCENE_INFO.setText(Display.displayCurrentSceneInfo());
+        ScenePanel.SCENE_INFO.setText(Display.showInfo());
         FEEDBACK.setText(Display.feedback());
         PlayerPanel.PLAYER_INFO.setText(Display.playerInfo());
     }
+
+    private static void saveData() throws IOException { Engine.saveGame(); }
 }

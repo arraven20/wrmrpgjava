@@ -1,6 +1,8 @@
 package data.actors;
 
-public class Health {
+import java.io.Serializable;
+
+public class Health implements Serializable {
 
     private int max_hp;
     private int hp;

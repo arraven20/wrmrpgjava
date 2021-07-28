@@ -1,6 +1,10 @@
 package data.actors;
 
-public class Actor {
+import data.items.Weapon;
+
+import java.io.Serializable;
+
+public class Actor implements Serializable {
 
     private int id;
     private String name;
@@ -9,6 +13,7 @@ public class Actor {
     private Health health;
     private int defense;
     private int currentSceneId;
+    private Weapon weapon;
 
 
     public Actor(int id, String name, String type){
@@ -29,6 +34,10 @@ public class Actor {
         this.defense = (int) ((Math.floor(this.attributes.getWarrior() + this.attributes.getMage()) / 2) + 4);
     }
 
+    public void setCurrentSceneId(int sceneId){ this.currentSceneId = sceneId; }
+
+    public void setWeapon(Weapon weapon){ this.weapon = weapon; }
+
 
     public String getName(){ return this.name; }
 
@@ -37,6 +46,8 @@ public class Actor {
     public Health getHealth(){ return this.health; }
 
     public int getDefene(){ return this.defense; }
+
+    public int getCurrentSceneId(){ return this.currentSceneId; }
 
 
 }

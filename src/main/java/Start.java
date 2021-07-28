@@ -1,10 +1,10 @@
-import core.Engine;
-import gui.Fscene;
+import gui.StartScene;
+
+import java.io.IOException;
 
 public class Start {
 
-    public static void main(String[] args){
-        Engine.dataSetup();
-        Fscene.showScene();
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        StartScene.showScene();
     }
 }

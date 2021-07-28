@@ -11,6 +11,18 @@ public class Display {
         FEEDBACK = text;
     }
 
+    public static String showInfo(){
+        if(Engine.getGameState().equals("WANDERING")){
+            return displayCurrentSceneInfo();
+        }
+        else if(Engine.getGameState().equals("COMBAT")){
+            return displayCombat();
+        }
+        else{
+            return "Something went wrong with the game state";
+        }
+    }
+
     public static String displayCurrentSceneInfo(){
         Scene currentScene = Engine.getCurrentScene();
         StringBuilder info = new StringBuilder();
@@ -40,6 +52,14 @@ public class Display {
         info.append(down);
 
         return info.toString();
+    }
+
+    public static String displayCombat(){
+        Actor monster = Engine.getCurrentScene().getMonster();
+        StringBuilder monsterInfo = new StringBuilder();
+        monsterInfo.append(monster.getName());
+
+        return monsterInfo.toString();
     }
 
     public static String displayCurrentSceneTitle(){
