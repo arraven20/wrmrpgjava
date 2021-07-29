@@ -1,5 +1,6 @@
 package core;
 
+import data.actors.Actor;
 import data.events.Event;
 import data.scenes.Scene;
 import data.scenes.directions.Direction;
@@ -25,6 +26,9 @@ public class Actions {
             System.out.println("actionArray is shorter then 2");
             if(actionArray.length == 1){
                 if(actionArray[0].equals("attack")){
+                    Actor pc = Engine.getPlayer();
+                    //int damage = pc.getWeapon()
+                    Engine.setFeedbackText(pc.getWeapon().getName());
 
                 }
             }else{

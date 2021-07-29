@@ -11,5 +11,7 @@ public class Weapon extends Item{
         this.damage = damage;
     }
 
+    public Damage getDamage(){ return this.damage; }
+
 
 }

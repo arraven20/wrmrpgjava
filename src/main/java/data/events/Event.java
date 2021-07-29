@@ -32,4 +32,6 @@ public class Event implements Serializable {
 
     public Actor getCombatant(){ return this.combatant; }
 
+
+
 }

@@ -70,4 +70,7 @@ public class Engine {
         return roll;
     }
 
+    public boolean playerCheckSuccess(int player, int other){
+        return player > other;
+    }
 }
