@@ -2,7 +2,9 @@ package data.events;
 
 import data.actors.Actor;
 
-public class Event {
+import java.io.Serializable;
+
+public class Event implements Serializable {
 
     private String eventType;
     private Actor combatant;

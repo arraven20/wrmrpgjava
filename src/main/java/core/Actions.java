@@ -1,5 +1,6 @@
 package core;
 
+import data.events.Event;
 import data.scenes.Scene;
 import data.scenes.directions.Direction;
 
@@ -22,6 +23,13 @@ public class Actions {
             }
         }else{
             System.out.println("actionArray is shorter then 2");
+            if(actionArray.length == 1){
+                if(actionArray[0].equals("attack")){
+
+                }
+            }else{
+                System.out.println("ActionArray is bigger then 2");
+            }
         }
 
 //        for (String a : arrOfStr)
@@ -45,14 +53,28 @@ public class Actions {
         if(!(exitId == 0)){
             // check if locked
             if(!exit.getLock().isLocked()){
-                Engine.setFeedbackText("You can go " + direction);
-                Engine.setCurrentScene(Engine.getScene(exitId));
+                Engine.setFeedbackText("You went " + direction);
+                Scene newScene = Engine.getScene(exitId);
+                Engine.setCurrentScene(newScene);
+                // handle event
+                handleEvent(newScene.getEvent());
             }else{
                 Engine.setFeedbackText("Locked!!");
             }
 
         }else{
             Engine.setFeedbackText("You cannot go " + direction);
+        }
+    }
+
+    private static void handleEvent(Event event){
+
+        switch(event.getEventType()){
+            case "combat" -> {
+                Engine.setGameState("COMBAT");
+                Engine.setActiveOpponent(event.getCombatant());
+            }
+            case "none" -> Engine.setGameState("WANDERING");
         }
     }
 

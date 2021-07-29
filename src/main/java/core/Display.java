@@ -1,6 +1,7 @@
 package core;
 
 import data.actors.Actor;
+import data.events.Combat;
 import data.scenes.Scene;
 
 public class Display {
@@ -34,8 +35,6 @@ public class Display {
         String up = "Up: " + currentScene.getUp().getDescription();
         String down = "Down: " + currentScene.getDown().getDescription();
 
-
-
         info.append(currentScene.getDescription());
         info.append(NEWLINE);
         info.append(NEWLINE);
@@ -55,11 +54,22 @@ public class Display {
     }
 
     public static String displayCombat(){
-        Actor monster = Engine.getCurrentScene().getMonster();
-        StringBuilder monsterInfo = new StringBuilder();
-        monsterInfo.append(monster.getName());
+        Actor combatant = Engine.getCurrentScene().getEvent().getCombatant();
+        StringBuilder combat = new StringBuilder();
+        if(Combat.playerHasInitiative()){
+            combat.append("You see a ")
+                    .append(combatant.getName())
+                    .append(" wielding a ")
+                    .append(combatant.getWeapon().getName());
+        }else{
+            combat.append("a ")
+                    .append(combatant.getName())
+                    .append(" wielding a ")
+                    .append(combatant.getWeapon().getName())
+                    .append(" attacks you");
+        }
 
-        return monsterInfo.toString();
+        return combat.toString();
     }
 
     public static String displayCurrentSceneTitle(){

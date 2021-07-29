@@ -14,5 +14,7 @@ public abstract class Item implements Serializable {
         this.value = value;
     }
 
+    public String getName(){ return this.name; }
+
 
 }
