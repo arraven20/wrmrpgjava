@@ -2,6 +2,8 @@ package core;
 
 import data.actors.Actor;
 import data.actors.CreateActors;
+import data.items.Damage;
+import data.items.Weapon;
 import data.scenes.CreateScenes;
 import data.scenes.Scene;
 
@@ -70,7 +72,27 @@ public class Engine {
         return roll;
     }
 
-    public boolean playerCheckSuccess(int player, int other){
+    public static boolean playerHasInitiative(Actor combatant){
+        int playerInit = Dice.d6();
+        int combatantInit = Dice.d6();
+
+        return playerInit > combatantInit;
+    }
+
+    public static boolean playerCheckSuccess(int player, int other){
         return player > other;
+    }
+
+    public static Integer calculateWeaponDamage(Weapon weapon){
+        int dieRoll = Dice.d6();
+        int bonusAmount = weapon.getDamage().getBonus();
+        String bonus = weapon.getDamage().getBonusType();
+        System.out.println(dieRoll + bonus + bonusAmount);
+        switch (bonus){
+            case "+" -> { return dieRoll + bonusAmount; }
+            case "-" -> { return dieRoll - bonusAmount; }
+            case "/" -> {return dieRoll / bonusAmount; }
+        }
+        return 0;
     }
 }

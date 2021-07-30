@@ -13,15 +13,23 @@ public class Display {
     }
 
     public static String showInfo(){
-        if(Engine.getGameState().equals("WANDERING")){
-            return displayCurrentSceneInfo();
+        String gameState = Engine.getGameState();
+
+        switch(gameState){
+            case "WANDERING" -> { return displayCurrentSceneInfo(); }
+            case "COMBAT" -> { return displayCombat(); }
+            case "POSSIBLE_COMBAT" -> { return "possible combat"; }
         }
-        else if(Engine.getGameState().equals("COMBAT")){
-            return displayCombat();
-        }
-        else{
-            return "Something went wrong with the game state";
-        }
+        return "Something went wrong with the game state";
+//        if(Engine.getGameState().equals("WANDERING")){
+//            return displayCurrentSceneInfo();
+//        }
+//        else if(Engine.getGameState().equals("COMBAT")){
+//            return displayCombat();
+//        }
+//        else{
+//            return "Something went wrong with the game state";
+//        }
     }
 
     public static String displayCurrentSceneInfo(){
@@ -56,7 +64,7 @@ public class Display {
     public static String displayCombat(){
         Actor combatant = Engine.getCurrentScene().getEvent().getCombatant();
         StringBuilder combat = new StringBuilder();
-        if(Combat.playerHasInitiative()){
+        if(Engine.playerHasInitiative(combatant)){
             combat.append("You see a ")
                     .append(combatant.getName())
                     .append(" wielding a ")

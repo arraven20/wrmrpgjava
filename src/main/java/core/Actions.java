@@ -28,7 +28,8 @@ public class Actions {
                 if(actionArray[0].equals("attack")){
                     Actor pc = Engine.getPlayer();
                     //int damage = pc.getWeapon()
-                    Engine.setFeedbackText(pc.getWeapon().getName());
+                    String damage = Engine.calculateWeaponDamage(pc.getWeapon()).toString();
+                    Engine.setFeedbackText("damage: " + damage);
 
                 }
             }else{
@@ -75,8 +76,16 @@ public class Actions {
 
         switch(event.getEventType()){
             case "combat" -> {
-                Engine.setGameState("COMBAT");
-                Engine.setActiveOpponent(event.getCombatant());
+                if(Engine.getGameState().equals("COMBAT")){
+                    Engine.setActiveOpponent(event.getCombatant());
+                }else{
+                    if(Engine.playerHasInitiative(event.getCombatant())){
+                        Engine.setGameState("POSSIBLE_COMBAT");
+                    }else{
+                        Engine.setGameState("COMBAT");
+                        Engine.setActiveOpponent(event.getCombatant());
+                    }
+                }
             }
             case "none" -> Engine.setGameState("WANDERING");
         }
